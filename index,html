@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVE Online | Ops Command</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.0/dist/cyborg/bootstrap.min.css">
+    <link rel="icon" type="image/png" href="icon.png">
+    <style>
+        body { background-color: #020202; color: #00d4ff; font-family: 'Segoe UI', sans-serif; }
+        .container { margin-top: 50px; }
+        .card { border: 1px solid #005f73; background: #0a0a0a; transition: 0.3s; }
+        .card:hover { border-color: #00d4ff; box-shadow: 0 0 10px #00d4ff; }
+        .category-title { color: #94d2bd; text-transform: uppercase; letter-spacing: 2px; border-bottom: 1px solid #333; padding-bottom: 10px; margin-bottom: 15px; }
+        .btn-link { color: #00d4ff; text-decoration: none; text-align: left; padding: 5px 0; }
+        .btn-link:hover { color: #fff; }
+        .footer-text { color: #444; font-size: 0.8rem; margin-top: 50px; text-align: center; }
+        .eve-clock {
+    font-family: 'Courier New', Courier, monospace;
+    color: #00d4ff;
+    text-shadow: 0 0 5px #00d4ff;
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    border-bottom: 1px solid #005f73;
+    margin-bottom: 30px;}
+
+
+    </style>
+</head>
+
+<script>
+    function updateClock() {
+        const now = new Date();
+        // Convert local time to UTC (EVE Time)
+        const h = String(now.getUTCHours()).padStart(2, '0');
+        const m = String(now.getUTCMinutes()).padStart(2, '0');
+        const s = String(now.getUTCSeconds()).padStart(2, '0');
+
+        document.getElementById('clock').innerText = h + ":" + m + ":" + s;
+    }
+
+    // Update every 1 second
+    setInterval(updateClock, 1000);
+    updateClock(); // Run immediately on load
+
+
+
+
+
+</script>
+
+<body>
+
+<div class="container">
+    <h2 class="mb-5 text-center">NeoCuM - LINKZ v1.0.1</h2>
+
+    <div class="row mb-5 justify-content-center">
+        <div class="col-md-8">
+            <div class="input-group">
+                <input type="text" id="eveSearch" class="form-control bg-dark text-info border-info" placeholder="Search zKillboard / Dotlan...">
+                <button class="btn btn-outline-info" onclick="searchZkill()">zKill</button>
+                <button class="btn btn-outline-info" onclick="searchDotlan()">Dotlan</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function searchZkill() {
+            let val = document.getElementById('eveSearch').value;
+            window.open('https://zkillboard.com/search/' + val, '_blank');
+        }
+        function searchDotlan() {
+            let val = document.getElementById('eveSearch').value;
+            window.open('https://evemaps.dotlan.net/search?q=' + val, '_blank');
+        }
+
+        async function checkEVEStatus() {
+    const statusElement = document.getElementById('server-status');
+    const footerElement = document.getElementById('footer-status'); // New reference
+
+    try {
+        const response = await fetch('https://esi.evetech.net/latest/status/?datasource=tranquility');
+        const data = await response.json();
+
+        if (response.ok) {
+            const pilotCount = data.players.toLocaleString();
+
+            // Update Top Status
+            statusElement.innerText = "ONLINE (" + pilotCount + " PILOTS)";
+            statusElement.style.color = "#00ff00";
+
+            // Update Footer Status
+            footerElement.innerText = "TRANQUILITY_ONLINE_" + pilotCount + "_PILOTS";
+            footerElement.style.color = "#00d4ff"; // Matches your theme blue
+        } else {
+            const offlineText = "TRANQUILITY_OFFLINE";
+            statusElement.innerText = "OFFLINE";
+            statusElement.style.color = "#ff0000";
+            footerElement.innerText = offlineText;
+            footerElement.style.color = "#ff0000";
+        }
+    } catch (error) {
+        footerElement.innerText = "CONNECTION_ERROR";
+    }
+}
+
+
+
+
+async function checkEVEStatus() {
+    const statusElement = document.getElementById('server-status');
+    const footerElement = document.getElementById('footer-status'); // New reference
+
+    try {
+        const response = await fetch('https://esi.evetech.net/latest/status/?datasource=tranquility');
+        const data = await response.json();
+
+        if (response.ok) {
+            const pilotCount = data.players.toLocaleString();
+
+            // Update Top Status
+            statusElement.innerText = "ONLINE (" + pilotCount + " PILOTS)";
+            statusElement.style.color = "#00ff00";
+
+            // Update Footer Status
+            footerElement.innerText = "TRANQUILITY_ONLINE_" + pilotCount + "_PILOTS";
+            footerElement.style.color = "#00d4ff"; // Matches your theme blue
+        } else {
+            const offlineText = "TRANQUILITY_OFFLINE";
+            statusElement.innerText = "OFFLINE";
+            statusElement.style.color = "#ff0000";
+            footerElement.innerText = offlineText;
+            footerElement.style.color = "#ff0000";
+        }
+    } catch (error) {
+        footerElement.innerText = "CONNECTION_ERROR";
+    }
+}
+
+
+
+    </script>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card p-4 mb-4">
+                <h5 class="category-title">Intel & Navigation</h5>
+                <div class="d-flex flex-column">
+                    <a href="https://zkillboard.com/" target="_blank" class="btn-link">▸ zKillboard</a>
+                    <a href="https://eve-gatecheck.space/eve/" target="_blank" class="btn-link">▸ Eve Gatecheck</a>
+                    <a href="https://evemaps.dotlan.net/" target="_blank" class="btn-link">▸ DOTLAN Maps</a>
+                    <a href="https://dscan.info" target="_blank" class="btn-link">▸ D-scan</a>
+                    <a href="https://localthreat.xyz" target="_blank" class="btn-link">▸ Local Threat</a>
+                    <a href="https://anoik.is/wormholes" target="_blank" class="btn-link">▸ Anoikis (holes)</a>
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card p-4 mb-4">
+                <h5 class="category-title">Market & Industry</h5>
+                <div class="d-flex flex-column">
+                    <a href="https://evetycoon.com/market" target="_blank" class="btn-link">▸ EVE Tycoon</a>
+                    <a href="https://janice.e-351.com" target="_blank" class="btn-link">▸ Janice Appraisal</a>
+                    <a href="https://ravworks.com/profit" target="_blank" class="btn-link">▸ Ravworks (profits)</a>
+                    <a href="https://innominate.iaam.top" target="_blank" class="btn-link">▸ Innomate Shopping list</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card p-4 mb-4">
+                <h5 class="category-title">Rat and Crab</h5>
+                <div class="d-flex flex-column">
+                    <a href="https://goonfleet.com/index.php/forum/784-beehive/" target="_blank" class="btn-link">⌂ Heehive Forums</a>
+                    <a href="https://goonfleet.com/index.php/topic/379994-how-to-beehive-megathread/" target="_blank"class="btn-link">⌂ How to Beehive</a>
+                    <a href="https://goonfleet.com/index.php/topic/371992-updated-salvage-ratting-ishtar-for-angels-tanky-ratter-ishtar/" target="_blank"class="btn-link">⌂ Ishtar Ratting</a>
+                    <a href="https://wiki.eveuniversity.org/Sovereignty#Military_Upgrades" target="_blank"class="btn-link">⌂ Sov Rat Sites</a>
+
+
+
+                    <a href="#" class="btn-link">⌂ Blank</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card p-4 mb-4 border-warning">
+                <h5 class="category-title text-warning">Industry Stuffs</h5>
+                <div class="d-flex flex-column">
+                    <a href="files/Insmother_mining_sov.png" target="_blank" class="btn-link text-warning">⌂ Insmother Mining Upgrades (PNG)</a>
+                    <a href="https://ore.cerlestes.de/ore" target="_blank" class="btn-link text-warning">▸ Ore Prices</a>
+                    <a href="https://www.eve-webtools.com/Planetary/" target="_blank" class="btn-link text-warning">▸ PI</a>
+                    <a href="https://docs.google.com/spreadsheets/d/1lbczWYWPAgP0o0aniMA-OC9J-tAsnhAEy0WcxUoHGLA/edit?gid=0#gid=0" target="_blank" class="btn-link text-warning">▸ Mining ISK/h (google doc)</a>
+                    <a href="https://kumgo.space/calculator" target="_blank" class="btn-link text-warning">▸ KUM&GO</a>
+                    <a href="https://goonmetrics.apps.gnf.lt" target="_blank" class="btn-link text-warning">▸ Goonmetrics</a>
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card p-4 mb-4 border-warning">
+                <h5 class="category-title text-warning">GSF links</h5>
+                <div class="d-flex flex-column">
+                    <a href="https://goonfleet.com/index.php/forum/266-fleet-doctrines-and-reimbursement/" target="_blank" class="btn-link text-warning">▸ Strat OP Doctorine</a>
+                    <a href="https://goonfleet.com/index.php/forum/820-peacetime/" target="_blank" class="btn-link text-warning">▸ Peacetime Doctorines</a>
+                    <a href="https://skills.apps.gnf.lt" target="_blank" class="btn-link text-warning">▸ Imperium Skill Checker</a>
+                    <a href="https://affcare.srp.gnf.lt/my-claims" target="_blank" class="btn-link text-warning">▸ SRP</a>
+                    <a href="https://fleets.gnf.lt/dashboard" target="_blank" class="btn-link text-warning">▸ Check PAPs</a>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card p-4 mb-4 border-warning">
+                <h5 class="category-title text-warning">Blank</h5>
+                <div class="d-flex flex-column">
+                    <a href="#" class="btn-link text-warning">▸ Blank</a>
+                    <a href="#" class="btn-link text-warning">▸ Blank</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center my-4">
+        <a href="data/index.html" target="_blank" class="btn btn-warning btn-lg">
+            ▸ ACCESS DATA VAULT
+        </a >
+    </div>
+
+
+    <div class="footer-text" style="border-top: 1px dashed #f5c71a; color: #f5c71a;">
+    <div class="row pt-3">
+        <div class="col-md-4 text-start">
+            <small>NODE: C-J6MT_HUB_01</small><br>
+            <small>AUTH: GSF_ALLIANCE_CLEARANCE</small>
+        </div>
+
+        <div class="col-md-4 text-center">
+            <strong id="random-goon-text">GRRR GOONS // HAT GOONS</strong><br>
+            <small>EST. 2006 - INSMOTHER IS HOME</small>
+<script>
+            const goonQuotes = [
+                "GRRR GOONS // HAT GOONS",
+                "THE SOUTH IS DEAD // LONG LIVE THE SOUTH",
+                "DIDN'T WANT THAT CAPITAL ANYWAY",
+                "ALREADY REPLACED",
+                "WHERE IS THE FLOODGATE?",
+                "WE HAVE MORE SUBCAPS THAN YOU",
+                "STATIONARY ASSET // DO NOT MOVE",
+                "BEES DON'T SCARE // BEES STING",
+                "1DQ BY CHRISTMAS",
+                "THE SWARM CODES IN JABBER"
+            ];
+
+            function randomizeFooter() {
+                const textElement = document.getElementById('random-goon-text');
+                if (textElement) {
+                    // Pick a random line from the array
+                    const randomIndex = Math.floor(Math.random() * goonQuotes.length);
+                    textElement.innerText = goonQuotes[randomIndex];
+                }
+            }
+
+            // Run it once when the page loads
+            randomizeFooter();
+
+            // Optional: If you want it to change every 30 seconds without refreshing:
+            // setInterval(randomizeFooter, 30000);
+
+
+            </script>
+        </div>
+
+        <div class="col-md-4 text-end">
+            <small>ENCRYPTION: JABBER_V3_ACTIVE</small><br>
+            <small>STATUS: [REDACTED]</small>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+</body>
+<div class="eve-clock">
+    EVE TIME: <span id="clock">00:00:00</span>
+</div>
+</html>
