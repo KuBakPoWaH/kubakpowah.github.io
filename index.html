@@ -107,16 +107,15 @@ button.pill:hover{border-color:var(--line-hi)}
 .hidden{display:none!important}
 .empty{color:var(--muted);text-align:center;padding:30px;display:none}
 
-/* ---------- vault + footer ---------- */
-.vault{display:block;width:max-content;margin:30px auto 0;padding:14px 30px;border-radius:999px;text-decoration:none;
-  font-weight:700;letter-spacing:.12em;color:#1a1300;background:linear-gradient(90deg,#f5c71a,#ffdf6b);
-  box-shadow:0 0 24px rgba(245,199,26,.35);transition:transform .2s,box-shadow .2s}
-.vault:hover{transform:scale(1.04);box-shadow:0 0 36px rgba(245,199,26,.55)}
+/* ---------- footer ---------- */
 footer{margin-top:40px;padding-top:18px;border-top:1px dashed rgba(245,199,26,.35);color:rgba(245,199,26,.8);
   display:grid;grid-template-columns:1fr auto 1fr;gap:12px;font-family:var(--mono);font-size:.72rem;align-items:center}
 footer .mid{text-align:center}
 footer .mid strong{display:block;font-size:.85rem;color:var(--gold)}
 footer .right{text-align:right}
+footer a.contact{color:var(--gold);text-decoration:none;border-bottom:1px dashed rgba(245,199,26,.5)}
+footer a.contact:hover{color:#fff}
+footer{margin-top:46px}
 @media (max-width:700px){footer{grid-template-columns:1fr;text-align:center}footer .right{text-align:center}}
 </style>
 </head>
@@ -191,9 +190,10 @@ footer .right{text-align:right}
     <section class="card gold">
       <h2>Industry Stuffs</h2>
       <ul>
-        <li><a href="https://wiki.eveuniversity.org/Asteroids_and_ore#Ore_Prospecting_Arrays" target="_blank" rel="noopener">Mining Sov Upgrades (Ore Prospecting Arrays) <span class="tag">WIKI</span></a></li>
+        <li><a href="https://wiki.eveuniversity.org/Asteroids_and_ore#Ore_Prospecting_Arrays" target="_blank" rel="noopener">Mining Upgrades (Prospecting Arrays) <span class="tag">WIKI</span></a></li>
         <li><a href="https://goonfleet.com/index.php/topic/363169-know-your-mine-anom-sovs-mining-anomalies-inphografic/" target="_blank" rel="noopener">Know Your Mine Anom <span class="tag">GF</span></a></li>
         <li><a href="https://goonfleet.com/index.php/topic/382127-sov-upgrades-changes-of-unused-systems/" target="_blank" rel="noopener">Sov Upgrades (unused systems) <span class="tag">GF</span></a></li>
+        <li><a href="https://pst.snipereagle.xyz/6Q0Pp5JT0Jk" target="_blank" rel="noopener">Sov Upgrades (snipereagle)</a></li>
         <li><a href="https://ore.cerlestes.de/ore" target="_blank" rel="noopener">Ore Prices</a></li>
         <li><a href="https://www.eve-webtools.com/Planetary/" target="_blank" rel="noopener">PI</a></li>
         <li><a href="https://docs.google.com/spreadsheets/d/1lbczWYWPAgP0o0aniMA-OC9J-tAsnhAEy0WcxUoHGLA/edit?gid=0#gid=0" target="_blank" rel="noopener">Mining ISK/h <span class="tag">SHEET</span></a></li>
@@ -210,6 +210,7 @@ footer .right{text-align:right}
         <li><a href="https://goonfleet.com/index.php/forum/826-capitals/" target="_blank" rel="noopener">Capitals <span class="tag">GF</span></a></li>
         <li><a href="https://goonfleet.com/index.php/forum/835-guides/" target="_blank" rel="noopener">Guides <span class="tag">GF</span></a></li>
         <li><a href="https://goonfleet.com/index.php/forum/205-gooniversity/" target="_blank" rel="noopener">Gooniversity <span class="tag">GF</span></a></li>
+        <li><a href="https://wiki.goonswarm.org/w/Alliance:Stargate" target="_blank" rel="noopener">Ansiblex Gates <span class="tag">WIKI</span></a></li>
         <li><a href="https://skills.apps.gnf.lt" target="_blank" rel="noopener">Imperium Skill Checker</a></li>
         <li><a href="https://affcare.srp.gnf.lt/my-claims" target="_blank" rel="noopener">SRP</a></li>
         <li><a href="https://fleets.gnf.lt/dashboard" target="_blank" rel="noopener">Check PAPs</a></li>
@@ -221,19 +222,18 @@ footer .right{text-align:right}
       <ul>
         <li><a href="https://docs.google.com/spreadsheets/d/1KyW2SkYaWhlcJRBAb99bicntZQvwbNlhDOGF3XTVJfc/edit?usp=sharing" target="_blank" rel="noopener">BPO List <span class="tag">SHEET</span></a></li>
         <li><a href="files/IndyConfig_MSG-BZ.json" download>Indy Config – MSG-BZ <span class="tag">JSON</span></a></li>
-        <li><a href="files/config.rar" download>Config Archive <span class="tag">RAR</span></a></li>
+        <li><a href="files/Ravworks_Configs.zip" download>All Indy Configs (0UBC-R + MSG-BZ) <span class="tag">ZIP</span></a></li>
+        <li><a href="https://docs.google.com/spreadsheets/d/1LfhUY_L2c6EcgJRYQ3nvuIeJqKqFvnvac3ENTj7f4ls/edit?pli=1&amp;gid=1056866097#gid=1056866097" target="_blank" rel="noopener">Twine Sheet <span class="tag">SHEET</span></a></li>
       </ul>
     </section>
 
   </main>
   <p class="empty" id="empty">No links match. Hit <b>zKill</b> or <b>Dotlan</b> to search there instead.</p>
 
-  <a class="vault" href="data/index.html">▸ ACCESS DATA VAULT</a>
-
   <footer>
     <div>NODE: C-J6MT_HUB_01<br>AUTH: GSF_ALLIANCE_CLEARANCE</div>
     <div class="mid"><strong id="quote">GRRR GOONS // HAT GOONS</strong>EST. 2006 — INSMOTHER IS HOME</div>
-    <div class="right">ENCRYPTION: JABBER_V3_ACTIVE<br><span id="tq-foot">STATUS: [REDACTED]</span></div>
+    <div class="right"><a class="contact" href="https://discordapp.com/users/83619572134903808" target="_blank" rel="noopener">CONTACT: DISCORD ↗</a><br>ENCRYPTION: JABBER_V3_ACTIVE<br><span id="tq-foot">STATUS: [REDACTED]</span></div>
   </footer>
 </div>
 
